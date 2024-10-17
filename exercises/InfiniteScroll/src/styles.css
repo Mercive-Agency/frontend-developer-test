@@ -45,3 +45,8 @@ footer {
 .hidden{
     display: none;
 }
+
+.testimonialBox{
+    border-radius: 15px;
+    border-left: 1px solid lightblue;
+}
