@@ -41,3 +41,7 @@ footer {
 }
 
 /* Add your CSS below here */
+
+.hidden{
+    display: none;
+}
