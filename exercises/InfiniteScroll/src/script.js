@@ -3,40 +3,48 @@
 let finalTestimonialId = null;
 let isFetching = false;
 let amountOfTestimonials = 5;
+const proxyUrl = 'https://api.allorigins.win/raw?url=';
+let hasNext = true;
+
 
 
 // fetch testimonials
 async function fetchTestimonials(amount){
-  if (isFetching) return;
+  if (isFetching || !hasNext) return;
   isFetching = true;
 
   let api = `https://api.frontendexpert.io/api/fe/testimonials?limit=${amount}`;
 
   if(finalTestimonialId){
-    api += `&after=${lastTestimonialId}`;
+    api += `&after=${finalTestimonialId}`;
   }
 
   try {
-    const response = await fetch(api);
+    console.log(api)
+    const response = await fetch(proxyUrl + encodeURIComponent(api));
 
     if(!response.ok){
       throw new Error("Could not fetch testimonials");
     }
 
-    const testimonials = await response.json();
+    const testimonialsData = await response.json();
+    const testimonials = testimonialsData.testimonials;
 
     displayTestimonials(testimonials);
 
     if(testimonials.length > 0){
-      lastTestimonialId = (testimonials.length - 1).id;
+      finalTestimonialId = testimonials[testimonials.length - 1].id;
     }
 
-    if (testimonials.length < amountOfTestimonials){
+    hasNext = testimonialsData.hasNext;
+
+    if (!hasNext) {
+      console.log("There are no more testimonials to fetch.");
       window.removeEventListener('scroll', handleScroll);
     }
 
   } catch (error) {
-      console.log(error.message);
+      console.error(error.message);
   
   } finally {
     isFetching = false;
@@ -48,15 +56,19 @@ async function fetchTestimonials(amount){
 // display testimonials
 
 function displayTestimonials(testimonialsData){
-  const testimonialContainer = document.getElementById('testimonials-container');
-  const template = document.getElementById('testimonial-template');
+  const testimonialContainer = document.getElementById('testimonial-container');
 
-  testimonialsData.forEeach(testimonial => {
-    const clonedTestimonial = template.content.cloneNode(true);
-    clonedTestimonial.classList.remove('hidden');
-    clonedTestimonial.querySelector('testimonial-message').textContent = testimonial.message;
+  testimonialsData.forEach(testimonial => {
+    const newDiv = document.createElement('div');
+    newDiv.classList.add('testimonial');
 
-    testimonialContainer.appendChild(testimonial);
+    const newParagraph = document.createElement('p');
+    newParagraph.classList.add('testimonial-message');
+    newParagraph.textContent = testimonial.message;
+
+    newDiv.appendChild(newParagraph);
+    testimonialContainer.appendChild(newDiv);
+    console.log(testimonial.id)
   })
 }
 
@@ -77,6 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log("Page loaded, JavaScript is running!");
 
   // Add your JS code below here
-  window.addEventListener('scroll', handleScroll);
   fetchTestimonials(amountOfTestimonials)
+  window.addEventListener('scroll', handleScroll);
 });

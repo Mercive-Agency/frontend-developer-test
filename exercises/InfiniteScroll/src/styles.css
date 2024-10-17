@@ -35,24 +35,32 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    position: absolute;
     bottom: 0;
     width: 100%;
 }
 
 /* Add your CSS below here */
 
-.hidden{
-    display: none;
+#testimonial-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 1rem auto;
+    height: auto;
 }
 
-.testimonialBox{
+.testimonial{
     border-radius: 15px;
-    border-left: 1px solid lightblue;
+    border-left: 5px solid lightblue;
     background-color: #333;
+    width: clamp(450px, 40%, 45%);
+    padding: 20px;
+    margin: 1rem auto;
 }
 
 .testimonial-message{
     font-size: 16px;
     color: rgb(238, 238, 238);
+    font-family: monospace;
 }
