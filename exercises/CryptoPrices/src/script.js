@@ -18,7 +18,6 @@ nextBtn.addEventListener('click', () => {
   page+=1;
   fetchPrices(numberOfCrypto, page);
   btnStates()
-  console.log(page);
 });
 
 
@@ -26,7 +25,6 @@ backBtn.addEventListener('click', () => {
   page-=1;
   fetchPrices(numberOfCrypto, page);
   btnStates()
-  console.log(page);
 });
 
 
@@ -49,7 +47,6 @@ async function fetchPrices(coins, page){
   let api = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${coins}&page=${page}&sparkline=false&locale=en`;
 
   try {
-    console.log(api)
 
     // avoid CORS in dev
     const response = await fetch(proxyUrl + encodeURIComponent(api));
@@ -61,7 +58,6 @@ async function fetchPrices(coins, page){
     }
 
     const cryptoData = await response.json();
-    console.log(cryptoData);
 
     if (cryptoData.length < 10) {
       nextBtn.setAttribute('disabled', true);
