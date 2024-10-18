@@ -26,8 +26,11 @@ header h1 {
 
 main {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    margin: 40px 0;
+    margin: 1rem auto;
+    width: 70vw;
 }
 
 footer {
@@ -35,9 +38,117 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    position: absolute;
     bottom: 0;
     width: 100%;
 }
 
-/* Add your CSS below here */
+table{
+    width: 100%;
+    border: 1px solid black;
+    margin: 1rem auto;
+    border-collapse: collapse;
+}
+
+.tableHead{
+    height: 50px;
+}
+
+.tableColumn{
+    width: 30%;
+    text-align: left;
+    color: lightblue;
+    padding-left: 0.5rem;
+    border: 1px solid black;
+}
+
+.priceColumn{
+    width: 40%;
+    text-align: left;
+    color: lightblue;
+    padding-left: 0.5rem;
+    border: 1px solid black;
+}
+
+.tableRow{
+    border: 1px solid black;
+    padding: 0.5rem;
+}
+
+.tableData{
+    border: 1px solid black;
+    padding: 0.5rem;
+}
+
+.btnContainer{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+button{
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+#backBtn{
+    margin-right: 1rem;
+}
+
+.disabled{
+    visibility: 0.2;
+    background-color: gray;
+    cursor:not-allowed;
+}
+
+.imageSize{
+    width: 25px;
+    height: auto;
+}
+
+.nameOuterDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.nameInnerDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding-left: 0.5rem;
+}
+
+.priceOuterDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.priceHigh{
+    padding: 1rem;
+    background-color: rgba(37, 222, 105, 0.3);
+    width: 50px;
+}
+
+.priceLow{
+    padding: 1rem;
+    background-color: rgba(231, 53, 21, 0.3);
+    width: 50px;
+}

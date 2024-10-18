@@ -3,6 +3,8 @@
 let finalTestimonialId = null;
 let isFetching = false;
 let amountOfTestimonials = 5;
+
+// avoid CORS issue in dev
 const proxyUrl = 'https://api.allorigins.win/raw?url=';
 let hasNext = true;
 

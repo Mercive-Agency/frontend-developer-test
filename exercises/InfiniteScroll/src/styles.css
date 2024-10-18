@@ -54,9 +54,9 @@ footer {
     border-radius: 15px;
     border-left: 5px solid lightblue;
     background-color: #333;
-    width: clamp(450px, 40%, 45%);
+    max-width: 700px;
     padding: 20px;
-    margin: 1rem auto;
+    margin: 1rem;
 }
 
 .testimonial-message{
