@@ -22,7 +22,6 @@ async function fetchTestimonials(amount){
   }
 
   try {
-    console.log(api)
     const response = await fetch(proxyUrl + encodeURIComponent(api));
 
     if(!response.ok){
@@ -41,7 +40,6 @@ async function fetchTestimonials(amount){
     hasNext = testimonialsData.hasNext;
 
     if (!hasNext) {
-      console.log("There are no more testimonials to fetch.");
       window.removeEventListener('scroll', handleScroll);
     }
 
@@ -70,7 +68,6 @@ function displayTestimonials(testimonialsData){
 
     newDiv.appendChild(newParagraph);
     testimonialContainer.appendChild(newDiv);
-    console.log(testimonial.id)
   })
 }
 
