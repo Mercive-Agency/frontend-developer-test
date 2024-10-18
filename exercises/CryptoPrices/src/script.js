@@ -136,11 +136,12 @@ function displayCrypto(cryptoData){
     // PRICE 
     // PRICE
     const priceSection = document.createElement('td');
-    priceSection.classList.add('tableData');
+    //priceSection.classList.add('tableData');
 
     // create span for the actual price number
     const priceNum = document.createElement('span');
     priceNum.textContent = crypto.current_price.toFixed(2);
+    priceNum.classList.add('priceNum');
 
     // spans for price's highs and lows
     const priceHigh = document.createElement('span');
@@ -153,12 +154,14 @@ function displayCrypto(cryptoData){
 
     // store spans in div
     const highLowSpans = document.createElement('div');
+    highLowSpans.classList.add('inlineDiv');
     highLowSpans.append(priceHigh);
     highLowSpans.append(priceLow);
 
     // append price and div to the table data
     priceSection.append(priceNum);
     priceSection.append(highLowSpans);
+    priceSection.classList.add('priceSection')
 
     // MARKET CAP
     // MARKET CAP
