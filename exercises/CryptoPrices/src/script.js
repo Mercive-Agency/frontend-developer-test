@@ -117,10 +117,11 @@ function displayCrypto(cryptoData){
     // create new span for name
     const realName = document.createElement('span');
     realName.textContent = crypto.name;
+    realName.classList.add('realName');
 
     // create new span for symbol text
     const symbol = document.createElement('span');
-    symbol.textContent = crypto.symbol.toUpperCase();
+    symbol.innerHTML = `<span><strong>${crypto.symbol.toUpperCase()}</strong></span>`;
 
     // append both spans to the inner div
     nameInnerDiv.append(symbol);
@@ -136,11 +137,11 @@ function displayCrypto(cryptoData){
     // PRICE 
     // PRICE
     const priceSection = document.createElement('td');
-    //priceSection.classList.add('tableData');
+    priceSection.classList.add('tableData');
 
     // create span for the actual price number
     const priceNum = document.createElement('span');
-    priceNum.textContent = crypto.current_price.toFixed(2);
+    priceNum.innerHTML = `<span><strong>${crypto.current_price.toFixed(2)}</strong></span>`;
     priceNum.classList.add('priceNum');
 
     // spans for price's highs and lows
@@ -149,7 +150,7 @@ function displayCrypto(cryptoData){
     priceHigh.classList.add('priceHigh');
 
     const priceLow = document.createElement('span');
-    priceLow.textContent = "L: " + crypto.low_24h;
+    priceLow.textContent = "L: " + crypto.low_24h.toFixed(2);
     priceLow.classList.add('priceLow');
 
     // store spans in div
@@ -173,7 +174,8 @@ function displayCrypto(cryptoData){
 
     // create span for the number
     const marketCapNum = document.createElement('span');
-    marketCapNum.textContent = crypto.market_cap.toLocaleString();
+    marketCapNum.innerHTML = `<span><strong>${crypto.market_cap.toLocaleString()}</strong></span>`;
+    marketCapNum.classList.add('marketCapNum');
 
     // append span to table data
     marketCapSection.append(marketCapNum);
