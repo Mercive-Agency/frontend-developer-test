@@ -22,7 +22,11 @@ async function fetchTestimonials(amount){
   }
 
   try {
+    // avoid CORS issue in dev
     const response = await fetch(proxyUrl + encodeURIComponent(api));
+
+    // prod
+    // const response = await fetch(encodeURIComponent(api));
 
     if(!response.ok){
       throw new Error("Could not fetch testimonials");
