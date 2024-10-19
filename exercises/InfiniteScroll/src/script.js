@@ -62,10 +62,15 @@ function displayTestimonials(testimonialsData){
     const newDiv = document.createElement('div');
     newDiv.classList.add('testimonial');
 
+    const username = document.createElement('h2');
+    username.classList.add('testimonial-username');
+    username.innerHTML = '<h2><strong>Username</strong></h2>';
+
     const newParagraph = document.createElement('p');
     newParagraph.classList.add('testimonial-message');
     newParagraph.textContent = testimonial.message;
 
+    newDiv.appendChild(username);
     newDiv.appendChild(newParagraph);
     testimonialContainer.appendChild(newDiv);
   })
