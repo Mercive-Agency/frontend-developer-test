@@ -7,10 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
 const apiUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=30&page=1&sparkline=false&locale=en";
 let currentPage = 1;
 
-async function fetchCryptoData (page) {
-  const response = await fetch (`${apiUrl}&page=${page}`);
-  const data = await response.json()
-  return data;
+async function fetchCryptoData(page) {
+  try {
+    const response = await fetch(`${apiUrl}&page=${page}`);
+    const data = await response.json();
+    return data.slice(0, 10);
+  } catch (error) {
+    console.error("Failed to fetch data:", error);
+    return [];
+  }
 }
 
 function updateTable (data) {
@@ -20,9 +25,12 @@ function updateTable (data) {
   data.forEach(coin => {
       const row = document.createElement("tr");
       row.innerHTML = `
-          <td>${coin.symbol.toUpperCase()} <br> ${coin.name}</td>
-          <td>${coin.current_price}</td>
-          <td>${coin.market_cap.toLocaleString()}</td>
+     <td>
+        <img src="${coin.image}" alt="${coin.name} logo" width="30" height="30" style="vertical-align: middle; margin-right: 10px;">
+        ${coin.symbol.toUpperCase()} <br> <small>${coin.name}</small>
+      </td>
+      <td>${coin.current_price.toLocaleString("en-US", { style: "currency", currency: "USD" })}</td>
+      <td>${coin.market_cap.toLocaleString()}</td>
       `;
       tbody.appendChild(row)
   })
