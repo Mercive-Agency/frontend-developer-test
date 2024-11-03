@@ -5,17 +5,29 @@
     box-sizing: border-box;
 }
 
+:root{
+    --primary-background: #f4f4f4;
+    --secondary-background: #333;
+    --primary-text: #333;
+    --table-titles: lightblue;
+    --secondary-text: #ffffff;
+    --border-color: rgb(11, 11, 11);
+    --disabled: gray;
+    --price-high:rgba(37, 222, 105, 0.3);
+    --price-low: rgba(231, 53, 21, 0.3);
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--primary-background);
+    color: var(--primary-text);
 }
 
 /* Basic layout styles */
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--secondary-background);
+    color: var(--secondary-text);
     padding: 10px;
     text-align: center;
 }
@@ -26,18 +38,273 @@ header h1 {
 
 main {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    margin: 40px 0;
+    margin: 1rem auto;
+    width: 70vw;
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--secondary-background);
+    color: var(--secondary-text);
     text-align: center;
     padding: 10px;
-    position: absolute;
     bottom: 0;
     width: 100%;
 }
 
-/* Add your CSS below here */
+table{
+    width: 100%;
+    border: 1px solid var(--border-color);
+    margin: 1rem auto;
+    border-collapse: collapse;
+}
+
+.tableHead{
+    height: 50px;
+}
+
+.tableColumn{
+    width: 20%;
+    text-align: left;
+    color: var(--table-titles);
+    padding-left: 0.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.priceColumn{
+    width: 30%;
+    text-align: left;
+    color: var(--table-titles);
+    padding-left: 0.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.tableRow{
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+}
+
+.tableData{
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+}
+
+.btnContainer{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+button{
+    background-color: var(--secondary-background);
+    color: var(--secondary-text);
+    padding: 1rem;
+    cursor: pointer;
+}
+
+#backBtn{
+    margin-right: 1rem;
+}
+
+.disabled{
+    visibility: 0.2;
+    background-color: var(--disabled);
+    cursor: not-allowed;
+}
+
+.imageSize{
+    width: 25px;
+    height: auto;
+}
+
+.nameOuterDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.nameInnerDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding-left: 0.5rem;
+}
+
+.priceHigh{
+    padding: 1rem;
+    background-color: var(--price-high);
+    width: 50px;
+}
+
+.priceLow{
+    padding: 1rem;
+    background-color: var(--price-low);
+    width: 50px;
+}
+
+.inlineDiv{
+    display: inline-block;
+}
+
+.priceSection{
+    text-align: center;
+    height: 100%;
+    padding-left: 2rem; 
+}
+
+.priceNum{
+    padding-right: 1rem;
+}
+
+@media only screen and (max-width: 1200px){
+    main {
+        width: 80vw;
+    }
+    .priceColumn{
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width: 950px){
+    main {
+        width: 90vw;
+    }
+    .priceColumn{
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    main {
+        width: 95vw;
+    }
+    .priceColumn{
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .inlineDiv{
+        display: block;
+        margin-top: 1rem;
+        padding: 0.5rem;
+    }
+    .priceNum{
+        padding-right: 0rem;
+        padding-top: 0.2rem;
+        display: block;
+    }
+    .priceSection{
+        text-align: center;
+        height: 100%;
+        padding: 0rem; 
+    }
+}
+
+@media only screen and (max-width: 650px){
+    .tableColumn{
+        text-align: center;
+        padding-left: 0rem;
+    }
+    
+    .priceColumn{
+        text-align: center;
+        padding-left: 0rem;
+    }
+    .priceHigh{
+        padding: 0.8rem;
+        width: 100%;
+        display: block;
+    }
+    
+    .priceLow{
+        padding: 0.8rem;
+        width: 100%;
+        display: block;
+    }
+    .inlineDiv{
+        display: block;
+        margin-top: 0.5rem;
+        padding: 0.3rem;
+    }
+   
+}
+
+@media only screen and (max-width: 480px){
+    header h1{
+        font-size: 18px;
+    }
+    main {
+        width: 100vw;
+    }
+    table{
+        font-size: 14px;
+    }
+
+    table thead{
+        font-size: 10px;
+    }
+    .nameOuterDiv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+    }
+
+    .nameInnerDiv{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding-left: 0rem;
+    }
+    .priceHigh{
+        padding: 0.3rem;
+    }
+    
+    .priceLow{
+        padding: 0.3rem;
+    }
+    .btnContainer{
+        padding-left: 0.5rem;
+    }
+    .realName{
+        text-align: center;
+    }
+    .marketCapNum{
+        text-align: center;
+        font-size: 12px;
+    }
+    .tableColumn{
+        text-align: center;
+        padding-left: 0rem;
+    }
+    
+    .priceColumn{
+        text-align: center;
+        padding-left: 0rem;
+    }
+    
+    .tableRow{
+        padding: 0rem;
+    }
+    
+    .tableData{
+        padding: 0.2rem;
+    }  
+}
